@@ -24,7 +24,7 @@
       "readOnly"    : true
     },
     "active" : {
-      "description" : "",
+      "description" : "Indicates whether the overdraft is an active one or not",
       "type"        : "boolean",
       "readOnly"    : true
     },
