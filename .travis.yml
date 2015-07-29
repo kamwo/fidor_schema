@@ -12,3 +12,5 @@ rvm:
 cache: bundler
 
 script: bundle exec rspec
+
+sudo: false
