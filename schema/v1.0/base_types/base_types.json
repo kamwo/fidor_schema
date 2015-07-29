@@ -8,8 +8,9 @@
       "type"        : "string"
     },
     "account_id" : {
-      "description" : "Fidor account the transaction belongs to.",
-      "type"        : "string"
+      "description" : "Fidor account the transaction belongs to",
+      "type"        : "string",
+      "maxLength"   : 8
     },
     "user_id" : {
       "description" : "Identifies the user who created this object",

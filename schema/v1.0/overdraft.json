@@ -8,9 +8,7 @@
       "$ref" : "./base_types/base_types.json#definitions/id"
     },
     "account_id" : {
-      "description" : "The external account id.",
-      "type"        : "string",
-      "maxLength"   : 8,
+      "$ref" : "./base_types/base_types.json#definitions/account_id",
       "readOnly"    : true
     },
     "line" : {
@@ -43,6 +41,10 @@
     {
       "rel"  : "self",
       "href" : "overdrafts/{id}"
+    },
+    {
+      "rel"   : "instances",
+      "href"  : "overdrafts"
     }
   ]
 }
