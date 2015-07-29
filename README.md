@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fidor/fidor_schema.svg?branch=master)](https://travis-ci.org/fidor/fidor_schema)
+
 # Fidor API Schema - BETA
 
 The Fidor API is described with [JSON Schema](http://json-schema.org), which serves
@@ -7,7 +9,7 @@ This gem(besides the schema) provides a single utility method: the path to the
 json files.
 
     gem install fidor_schema
-    
+
     require 'fidor_schema'
     Fidor::Schema.path
 
