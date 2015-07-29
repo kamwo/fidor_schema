@@ -1,0 +1,145 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "Short-term Loan",
+  "name"        : "short_term_loan",
+  "description" : "A short-term loan.",
+  "required"    : ["loan_amount", "duration"],
+  "properties"  : {
+    "id" : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "account_id" : {
+      "$ref" : "./base_types/base_types.json#definitions/account_id"
+    },
+    "loan_amount" : {
+      "description" : "A loaned amount in account currency, in minor units, e.g. 1EUR is represented as 100.",
+      "enum"  : [
+        10000,
+        19900
+      ],
+      "type" : "integer"
+    },
+    "duration" : {
+      "description" : "Duration of the loan in days",
+      "enum" : [
+        30,
+        60
+      ],
+      "type" : "integer"
+    },
+    "redemption_amount" : {
+      "description" : "Total amount of customer payments in account currency, in minor units, e.g. 1GBP is represented as 100.",
+      "readOnly" : true,
+      "type" : "integer"
+    },
+    "fee_amount" : {
+      "description" : "A loan fee in account currency, in minor units, e.g. 1GBP is represented as 100.",
+      "readOnly" : true,
+      "type" : "integer"
+    },
+    "total_amount" : {
+      "description" : "Loan Amount plus Fee Amount in account currency, in minor units, e.g. 1GBP is represented as 100.",
+      "readOnly" : true,
+      "type" : "integer"
+    },
+    "state" : {
+      "description" : "State of the loan.",
+      "enum"        : [
+        "created",
+        "order_mobile_tan_sent",
+        "active",
+        "redemption_mobile_tan_sent",
+        "paid",
+        "settled",
+        "unsettled",
+        "revoked"
+      ],
+      "readOnly" : true,
+      "type"     : "string"
+    },
+    "redemption_at" : {
+      "description" : "Date of the planned loan payback. ISO 8601 Date-Time",
+      "format"      : "date-time",
+      "type"        : "string",
+      "readOnly"    : true
+    },
+    "redemption_retry" : {
+      "description" : "Number of attempted redemptions",
+      "type"     : "integer",
+      "readOnly" : true
+    },
+    "currency" : {
+      "$ref"     : "./base_types/base_types.json#definitions/currency",
+      "readOnly" : true
+    },
+    "created_at" : {
+      "$ref" : "./base_types/base_types.json#definitions/created_at"
+    },
+    "updated_at" : {
+      "$ref" : "./base_types/base_types.json#definitions/updated_at"
+    }
+  },
+  "links" : [
+    {
+      "rel"          : "instances",
+      "href"         : "short_term_loans",
+      "desscripton"  : "List of all previous short_term_loans (history)",
+      "properties"   : {
+        "filter[account_ids]" : {
+          "title"    : "Find short term loans belonging to the given account ids. Single id or multiple ids comma-separated.",
+          "format"   : "date",
+          "type"     : "string"
+        },
+        "filter[created_at_from]" : {
+          "title"    : "Creation date filter from >= date",
+          "format"   : "date",
+          "type"     : "string"
+        },
+        "filter[created_at_to]" : {
+          "title"    : "Creation date filter to <= date",
+          "format"   : "date",
+          "type"     : "string"
+        },
+        "filter[states]" : {
+          "title"    : "Filter by single or multiple csv delimited states",
+          "enum"     : [
+            "created",
+            "order_mobile_tan_sent",
+            "active",
+            "redemption_mobile_tan_sent",
+            "paid",
+            "settled",
+            "unsettled",
+            "revoked"
+          ],
+          "type"    : "string"
+        }
+      }
+    },
+    {
+      "rel"         : "self",
+      "href"        : "short_term_loans/{id}",
+      "method"      : "GET",
+      "description" : "Shows a certain short_term_loan"
+    },
+    {
+      "rel"         : "current",
+      "href"        : "short_term_loans/current",
+      "method"      : "GET",
+      "description" : "Shows the current active short_term_loan"
+    },
+    {
+      "rel"         : "new",
+      "href"        : "short_term_loans/new",
+      "method"      : "GET",
+      "description" : "Shows the possible short_term_loan for a certain account"
+    },
+    {
+      "rel"         : "create",
+      "href"        : "short_term_loans",
+      "method"      : "POST",
+      "description" : "Activates a short_term_loan for the certain account"
+    }
+  ]
+}
