@@ -1,0 +1,131 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "preauth",
+  "description" : "A preauth is created when you, for example, send money to a not existing fidor account or use a mastercard",
+  "properties"  : {
+    "id" : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "account_id" : {
+      "$ref"     : "./base_types/base_types.json#definitions/account_id",
+      "readOnly" : true
+    },
+    "amount"      : {
+      "description" : "Preauthorized amount of money",
+      "$ref"        : "./base_types/base_types.json#definitions/amount",
+      "readOnly"    : true
+    },
+    "currency" : {
+      "$ref"     : "./base_types/base_types.json#definitions/currency",
+      "readOnly" : true
+    },
+    "preauth_type" : {
+      "$ref"       : "./base_types/base_types.json#definitions/preauth_type",
+      "readOnly"   : true
+    },
+    "preauth_type_details" : {
+      "description" : "Details specific to this preauth type are collected here.",
+      "readOnly"    : true,
+      "type"        : "object",
+      "oneOf"       : [
+        {
+          "title": "credit_card_details",
+          "$ref" : "./preauth_type_details/credit_card_details.json#"
+        },
+        {
+          "title": "internal_transfer_details",
+          "$ref" : "./preauth_type_details/internal_transfer_details.json#"
+        },
+        {
+          "title": "capital_bond_details",
+          "$ref" : "./preauth_type_details/capital_bond_details.json#"
+        },
+        {
+          "title": "currency_order_details",
+          "$ref" : "./preauth_type_details/currency_order_details.json#"
+        },
+        {
+          "title": "gmt_details",
+          "$ref" : "./preauth_type_details/gmt_details.json#"
+        },
+        {
+          "title": "ripple_details",
+          "$ref" : "./preauth_type_details/ripple_details.json#"
+        }
+      ]
+    },
+    "expires_at" : {
+      "description" : "Date of the preauthorization expiration. ISO 8601 Date-Time",
+      "format"      : "date-time",
+      "type"        : "string",
+      "readOnly"    : true
+    },
+    "created_at" : {
+      "$ref" : "./base_types/base_types.json#definitions/created_at"
+    },
+    "updated_at" : {
+      "$ref" : "./base_types/base_types.json#definitions/updated_at"
+    }
+  },
+  "links" : [
+    {
+      "rel"  : "self",
+      "href" : "preauths/{id}"
+    },
+    {
+      "rel"        : "instances",
+      "href"       : "preauths",
+      "properties" : {
+        "filter[account_ids]" : {
+          "title"  : "Find preauths belonging to the given account ids. Single id or multiple ids comma-separated.",
+          "format" : "integer",
+          "type"   : "string"
+        },
+        "filter[created_at_from]" : {
+          "title"  : "Creation date filter from >= date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[created_at_to]" : {
+          "title"  : "Creation date filter to <= date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[expiration_date_from]" : {
+          "title"  : "Date filter from >= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[expiration_date_to]" : {
+          "title"  : "Date filter to <= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[preauth_types]" : {
+          "$ref"  : "./base_types/base_types.json#definitions/preauth_type",
+          "title" : "By preauth types"
+        },
+        "page" : {
+          "title"       : "Page",
+          "description" : "In paginated results set the page to look for",
+          "type"        : "integer"
+        },
+        "per_page" : {
+          "title"       : "Per page",
+          "description" : "Results per page. Default is 10, max is 100",
+          "type"        : "integer"
+        },
+        "sort" : {
+          "title" : "Sort",
+          "enum"  : [
+            "ASC",
+            "DESC"
+          ],
+          "description" : "Sort the results in ASC or DESC",
+          "type"        : "string"
+        }
+      }
+    }
+  ]
+}

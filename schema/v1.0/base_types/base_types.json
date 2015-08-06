@@ -133,6 +133,20 @@
       ],
       "type" : "string",
       "maxLength"   : 255
+    },
+    "preauth_type": {
+      "description" : "Type of the preauthorization",
+      "enum"        : [
+        "creditcard_preauth",
+        "internal_transfer_preauth",
+        "capital_bond_preauth",
+        "currency_order_preauth",
+        "gmt_preauth",
+        "ripple_preauth",
+        "unknown"
+      ],
+      "type" : "string",
+      "maxLength"   : 255
     }
   }
 }

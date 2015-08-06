@@ -1,0 +1,42 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "internal_transfer_details",
+  "description" : "Fidor internal transfer related preauthorization details",
+  "properties"  : {
+    "remote_account_id" : {
+      "$ref"     : "../base_types/base_types.json#definitions/account_id",
+      "readOnly" : true
+    },
+    "internal_transfer_id" : {
+      "description" : "Id of transfer if transaction/preauth was created by a transfer. Refunded transactions have no id",
+      "readOnly"    : true,
+      "type"        : "string"
+    },
+    "remote_bic" : {
+      "description" : "BIC of the transfer sender",
+      "readOnly"    : true,
+      "type"        : "string"
+    },
+    "remote_iban" : {
+      "description" : "IBAN of the transfer sender",
+      "readOnly"    : true,
+      "type"        : "string"
+    },
+    "remote_name" : {
+      "description" : "Full name of the transfer sender",
+      "readOnly"    : true,
+      "type"        : "string"
+    },
+    "remote_nick" : {
+      "description" : "Community nickname of the transfer sender",
+      "readOnly"    : true,
+      "type"        : "string"
+    },
+    "remote_subject" : {
+      "description" : "Subject of the transaction",
+      "readOnly"    : true,
+      "type"        : "string"
+    }
+  }
+}
