@@ -2,27 +2,27 @@
   "$schema"     : "http://json-schema.org/draft-04/schema#",
   "type"        : "object",
   "title"       : "customer",
-  "description" : "",
-  "required"    : ["email", "first_name", "last_name", "gender", "title", "nick"],
+  "description" : "A customer object",
+  "required"    : [
+    "email", "password", "adr_mobile", "first_name", "last_name",
+    "gender", "title", "tos", "privacy_policy"
+  ],
   "properties"  : {
     "id" : {
       "$ref" : "./base_types/base_types.json#definitions/id"
     },
     "email" : {
-      "$ref"     : "./base_types/base_types.json#definitions/email",
-      "readOnly" : true
+      "$ref"     : "./base_types/base_types.json#definitions/email"
     },
     "first_name" : {
       "description" : "The given name of the customer",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "last_name" : {
       "description" : "The family name of the customer",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "gender" : {
       "description" : "The gender of the customer",
@@ -30,87 +30,73 @@
         "m",
         "f"
       ],
-      "type"     : "string",
-      "readOnly" : true
+      "type"     : "string"
     },
     "title" : {
       "description" : "Salutation e.g Mr. or Ms./Mrs.",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "enum"        : ["Mr.", "Mrs.", "Ms."]
     },
     "nick" : {
       "description" : "Nickname used in community.",
       "type"        : "string",
       "maxLength"   : 40,
-      "minLength"   : 2,
-      "readOnly"    : true
+      "minLength"   : 2
     },
     "maiden_name" : {
       "description" : "Name at birth, maiden name.",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "adr_street" : {
       "description" : "Address street",
       "type"        : "string",
-      "maxLength"   : 100,
-      "readOnly"    : true
+      "maxLength"   : 100
     },
     "adr_street_number" : {
       "description" : "Address street number",
       "type"        : "string",
-      "maxLength"   : 10,
-      "readOnly"    : true
+      "maxLength"   : 10
     },
     "adr_post_code" : {
       "description" : "Address post code",
       "type"        : "string",
-      "maxLength"   : 10,
-      "readOnly"    : true
+      "maxLength"   : 10
     },
     "adr_city" : {
       "description" : "Address City",
       "type"        : "string",
-      "maxLength"   : 100,
-      "readOnly"    : true
+      "maxLength"   : 100
     },
     "adr_country" : {
       "description" : "Address Country",
       "type"        : "string",
-      "maxLength"   : 100,
-      "readOnly"    : true
+      "maxLength"   : 100
     },
     "adr_phone" : {
       "description" : "Phone home",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "adr_mobile" : {
       "description" : "Phone mobile",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "adr_fax" : {
       "description" : "Phone fax",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "adr_businessphone" : {
       "description" : "Phone business",
       "type"        : "string",
-      "maxLength"   : 30,
-      "readOnly"    : true
+      "maxLength"   : 30
     },
     "birthday" : {
       "description" : "Date of birth",
       "type"        : "string",
-      "format"      : "date-time",
-      "readOnly"    : true
+      "format"      : "date-time"
     },
     "is_verified" : {
       "description" : "Indicates whether KYC has been performed.",
@@ -118,8 +104,7 @@
       "readOnly"    : true
     },
     "nationality" : {
-      "$ref"     : "./base_types/base_types.json#definitions/country",
-      "readOnly" : true
+      "$ref"     : "./base_types/base_types.json#definitions/country"
     },
     "marital_status" : {
       "description" : "1: single, 2: married, 3: widowed, 4: divorced, 5: seperated, 6: de facto",
@@ -131,8 +116,7 @@
         5,
         6
       ],
-      "type"     : "integer",
-      "readOnly" : true
+      "type"     : "integer"
     },
     "religion" : {
       "description" : "Denomination for tax reasons. 0: no information, 1: no denomination, 2: Protestant, 3: Roman-Catholic, 4-18: Other denominations",
@@ -156,24 +140,32 @@
         17,
         18
       ],
-      "type"     : "integer",
-      "readOnly" : true
+      "type"     : "integer"
     },
     "id_card_registration_city" : {
       "description" : "City where the id card is registered.",
-      "type"        : ["string", "null"],
-      "readOnly"    : true
+      "type"        : ["string", "null"]
     },
     "id_card_number" : {
       "description" : "ID card number",
-      "type"        : ["string", "null"],
-      "readOnly"    : true
+      "type"        : ["string", "null"]
     },
     "id_card_valid_until" : {
       "description" : "Expiration date of id card",
       "format"      : "date-time",
-      "type"        : ["string", "null"],
-      "readOnly"    : true
+      "type"        : ["string", "null"]
+    },
+    "tos" : {
+      "description" : "Indicates whether customer has agreed to terms of service or not",
+      "type"        : "boolean"
+    },
+    "privacy_policy" : {
+      "description" : "Indicates whether customer has agreed to privacy policy or not",
+      "type"        : "boolean"
+    },
+    "newsletter"    : {
+      "description" : "Indicates whether customer has agreed to receiving newsletter or not",
+      "type"        : "boolean"
     },
     "created_at" : {
       "$ref" : "./base_types/base_types.json#definitions/created_at"
@@ -194,6 +186,27 @@
     {
       "rel"  : "accounts",
       "href" : "customers/{id}/accounts"
+    },
+    {
+      "rel"         : "create",
+      "href"        : "customers",
+      "method"      : "POST",
+      "description" : "Creates a customer",
+      "properties"  : {
+        "password"   : {
+          "description" : "Password for accessing your account later. You can use lower and upper case letters, digits and special characters",
+          "type"        : ["string", "null"],
+          "minLength"   : 8,
+          "maxLength"   : 128,
+          "pattern"     : "^[0-9a-zA-Z!\"#$%&'()*+,-=./:;?@\\[\\]<>^_`{|}~]+$"
+        }
+      }
+    },
+    {
+      "rel"         : "update",
+      "href"        : "customers/{id}",
+      "method"      : "PUT",
+      "description" : "Updates customer data"
     }
   ]
 }
