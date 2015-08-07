@@ -82,6 +82,7 @@
       "properties" : {
         "filter[account_ids]" : {
           "title"  : "Find internal transfers belonging to the given account ids. Single id or multiple ids comma-separated.",
+          "format" : "integer",
           "type"   : "string"
         },
         "filter[created_at_from]" : {
@@ -140,18 +141,26 @@
       "method" : "GET"
     },
     {
-      "rel"  : "mtan",
-      "href" : "internal_transfers/{id}/mtan",
-      "title" : "Confirm the transfer with the mtan send to the user",
-      "method" : "PUT",
+      "rel"  : "authorizations",
+      "href" : "internal_transfers/{id}/authorizations",
+      "title" : "Shows the list of all authorizations created to authorize the transfer",
+      "method" : "GET"
+    },
+    {
+      "rel"  : "authorizations",
+      "href" : "internal_transfers/{id}/authorizations",
+      "title" : "Create a new authorization for a certain transfer",
+      "method" : "POST"
+    },
+    {
+      "rel"  : "authorizations",
+      "href" : "internal_transfers/{id}/authorizations/{id}",
+      "title" : "Shows a certain authorization",
+      "method" : "GET",
       "properties" : {
-        "mtan" : {
-          "title"  : "The mtan received by the user",
-          "required"   : true,
-          "type"   : "string"
-        }
+        "type" : "object",
+        "$ref": "./authorization.json"
       }
-
     }
   ]
 }

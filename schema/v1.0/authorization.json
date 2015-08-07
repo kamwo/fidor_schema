@@ -1,0 +1,33 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "authorization",
+  "description" : "An authorization object used for authorizing payments and personal data changes",
+  "properties"  : {
+    "id" : {
+      "$ref"     : "./base_types/base_types.json#definitions/id",
+      "readOnly" : true
+    },
+    "type" : {
+      "description" : "Type of the authorization",
+      "type" : "string",
+      "enum" : [
+        "pin",
+        "email",
+        "sms"
+      ],
+      "readOnly" : true
+    },
+    "state" : {
+      "description" : "State of the authorization",
+      "type" : "string",
+      "enum" : [
+        "sent",
+        "expired",
+        "suspended",
+        "used"
+      ],
+      "readOnly" : true
+    }
+  }
+}
