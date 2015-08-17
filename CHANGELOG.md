@@ -2,6 +2,14 @@
 
 A more detailed view of the changes can be found in the [commit messages](https://github.com/fidor/fidor_schema/commits/)
 
+## v0.9.0 (2015-08-17)
+
+* New transaction types (`capital_gains_tax`, `solidarity_tax`).
+* Added `preauths` schema.
+* Added `short_term_loan` schema.
+* Enabled customer creation to the `customer` schema.
+* Various cleanups / small tweaks.
+
 ##2015-06
 
 * add transfer_approval resource
