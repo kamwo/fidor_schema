@@ -1,4 +1,4 @@
-[![Build Status](https://ci.fidor.intern/fidor/fidor_schema.svg?token=FyYscMfjXuVQhcyP6psj)]
+![Build Status](https://ci.fidor.intern/fidor/fidor_schema.svg?token=FyYscMfjXuVQhcyP6psj)
 
 # Fidor API Schema - BETA
 
