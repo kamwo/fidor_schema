@@ -136,6 +136,26 @@
           "format" : "date-time",
           "type"   : "string"
         },
+        "filter[created_at_from]" : {
+          "title"  : "Date filter from >= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[created_at_to]" : {
+          "title"  : "Date filter to <= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[updated_at_from]" : {
+          "title"  : "Date filter from >= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
+        "filter[updated_at_to]" : {
+          "title"  : "Date filter to <= date. ISO 8601 Date",
+          "format" : "date-time",
+          "type"   : "string"
+        },
         "filter[transaction_types]" : {
           "$ref"  : "./base_types/base_types.json#definitions/transaction_type",
           "title" : "By transaction types"
