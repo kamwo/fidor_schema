@@ -1,0 +1,36 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "legal",
+  "description" : "Set of legal requirements a user has to accept",
+  "properties"  : {
+    "own_interest"  : {
+      "description" : "Indicates whether customer acts in his own interest",
+      "enum"        : [ true ],
+      "type"        : "boolean",
+      "default"     : false
+    },
+    "tos" : {
+      "description" : "Indicates whether customer has agreed to terms of service or not",
+      "enum"        : [ true ],
+      "type"        : "boolean",
+      "default"     : false
+    },
+    "privacy_policy" : {
+      "description" : "Indicates whether customer has agreed to privacy policy or not",
+      "enum"        : [ true ],
+      "type"        : "boolean",
+      "default"     : false
+    },
+    "us_citizen" : {
+      "description" : "Indicates whether the customer is a US citizen or not",
+      "type"        : "boolean",
+      "default"     : false
+    },
+    "us_tax_payer" : {
+      "description" : "Indicates whether the customer has to pay taxes in the US",
+      "type"        : "boolean",
+      "default"     : false
+    }
+  }
+}
