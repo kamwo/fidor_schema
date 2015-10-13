@@ -1,0 +1,22 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "Card PIN Code",
+  "name"        : "pin",
+  "rel"         : "pin",
+  "description" : "Card PIN code",
+  "parent"      : "card",
+  "properties": {
+    "id": {
+      "$ref"        : "../base_types/base_types.json#definitions/id"
+    },
+    "account_id" : {
+      "$ref"        : "../base_types/base_types.json#definitions/account_id"
+    },
+    "pin" : {
+      "description" : "Personal identification number of the card",
+      "type"        : "string",
+      "pattern"     : "^[0-9]{4}$"
+    }
+  }
+}
