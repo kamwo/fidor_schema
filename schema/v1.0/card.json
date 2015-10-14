@@ -1,0 +1,236 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "Card",
+  "name"        : "card",
+  "description" : "Cards endpoint",
+  "required"    : ["type", "design", "currency", "pin"],
+  "properties"  : {
+    "id" : {
+      "$ref"        : "./base_types/base_types.json#definitions/id"
+    },
+    "account_id" : {
+      "$ref"        : "./base_types/base_types.json#definitions/account_id",
+      "readOnly"    : true
+    },
+    "inscription" : {
+      "description" : "Card holder",
+      "type"        : "string",
+      "readOnly"    : true
+    },
+    "type" : {
+      "description" : "Card type",
+      "type"        : "string",
+      "enum"        : [
+        "fidor_digital_prepaid_mastercard_virtual",
+        "fidor_smart_prepaid_mastercard_cowboy",
+        "fidor_smart_prepaid_mastercard_ambassador",
+        "fidor_smart_prepaid_mastercard_girls",
+        "fidor_smart_prepaid_mastercard_pimp",
+        "fidor_smart_prepaid_mastercard_community",
+        "fidor_smart_prepaid_mastercard_classic_black",
+        "fidor_smart_prepaid_mastercard_classic_green",
+        "fidor_digital_prepaid_mastercard_virtuell",
+        "fidor_smart_prepaid_mastercard_classic_green2",
+        "fidor_smart_prepaid_mastercard_classic_black2",
+        "fidor_smart_prepaid_mastercard_classic_green_bis",
+        "fidor_smart_prepaid_mastercard_classic_black_bis",
+        "fidor_corporatecard_classic",
+        "fidor_smart_prepaid_mastercard_classic_green_ter",
+        "fidor_smart_prepaid_mastercard_classic_black_ter",
+        "fidor_travian_prepaid_mastercard",
+        "fidor_smartcard",
+        "fidor_debit_master_card"
+      ]
+    },
+    "design" : {
+      "description" : "Card design",
+      "type"        : "string"
+    },
+    "currency" : {
+      "$ref"        : "./base_types/base_types.json#definitions/currency"
+    },
+    "physical" : {
+      "description" : "Indicates if the card is a physical one",
+      "type"        : "boolean",
+      "readOnly"    : true
+    },
+    "valid_until" : {
+      "description" : "Card expiration date",
+      "format"      : "date-time",
+      "readOnly"    : true
+    },
+    "balance" : {
+      "description" : "Balance of the related account in minor units, e.g. 1EUR is represented as 100. Must be greater than 0 e.g. at least one cent in EUR",
+      "$ref" : "./base_types/base_types.json#definitions/amount",
+      "readOnly"    : true
+    },
+    "atm_limit" : {
+      "description" : "ATM limit in minor units, e.g. 1EUR is represented as 100. Must be greater than 0 e.g. at least one cent in EUR",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    },
+    "transaction_single_limit" : {
+      "description" : "Transaction single limit in minor units, e.g. 1EUR is represented as 100. Must be greater than 0 e.g. at least one cent in EUR",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    },
+    "transaction_volume_limit" : {
+      "description" : "Transaction volume limit in minor units, e.g. 1EUR is represented as 100. Must be greater than 0 e.g. at least one cent in EUR",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    },
+    "email_notification" : {
+      "description" : "Email notification",
+      "type"        : "boolean",
+      "default"     : true
+    },
+    "sms_notification" : {
+      "description" : "SMS notification",
+      "type"        : "boolean",
+      "default"     : false
+    },
+    "payed" : {
+      "description" : "Card payed boolean",
+      "type" : "boolean",
+      "readOnly"    : true
+    },
+    "state" : {
+      "description" : "State of the card",
+      "type"        : "string",
+      "enum" : [
+        "created",
+        "mobile_tan_sent",
+        "card_registration_requirments_check",
+        "card_registration_pending",
+        "card_registration_in_progress",
+        "card_registration_canceled",
+        "card_registration_completed",
+        "active",
+        "revoked",
+        "canceled",
+        "disabled",
+        "lost",
+        "expired",
+        "annual_fee_pending_active",
+        "annual_fee_pending_registration_completed"
+      ],
+      "readOnly"    : true
+    },
+    "lock_reason" : {
+      "description" : "Reason for card lock",
+      "type" : "string",
+      "enum" : [
+        "termination",
+        "compromised",
+        "lost",
+        "stolen",
+        "unneeded",
+        "better_offer",
+        "other_card",
+        "fraud"
+      ],
+      "readOnly"    : true
+    },
+    "disabled" : {
+      "description" : "Card disabled boolean",
+      "type"        : "boolean",
+      "readOnly"    : true
+    },
+    "created_at" : {
+      "$ref"        : "./base_types/base_types.json#definitions/created_at"
+    },
+    "updated_at" : {
+      "$ref"        : "./base_types/base_types.json#definitions/updated_at"
+    }
+  },
+  "links" : [
+    {
+      "description" : "All cards of a customer",
+      "href"        : "cards",
+      "method"      : "GET",
+      "rel"         : "instances",
+      "title"       : "Index"
+    },
+    {
+      "description" : "Card details",
+      "href"        : "cards/{id}",
+      "method"      : "GET",
+      "rel"         : "self",
+      "title"       : "Show"
+    },
+    {
+      "description" : "Card PIN code",
+      "href"        : "cards/{id}/pin",
+      "method"      : "GET",
+      "rel"         : "pin",
+      "title"       : "PIN code",
+      "schema"      : "pin"
+    },
+    {
+      "description" : "Card PAN number",
+      "href"        : "cards/{id}/pan",
+      "method"      : "GET",
+      "rel"         : "pan",
+      "title"       : "Permanent Account Number"
+    },
+    {
+      "description" : "Lock a card",
+      "href"        : "cards/{id}/lock",
+      "method"      : "PUT",
+      "rel"         : "lock",
+      "title"       : "Lock"
+    },
+    {
+      "description" : "Unlock a card",
+      "href"        : "cards/{id}/unlock",
+      "method"      : "PUT",
+      "rel"         : "unlock",
+      "title"       : "Unlock"
+    },
+    {
+      "description" : "Block a card: in case of fraud / lost / stolen card",
+      "href"        : "cards/{id}/block",
+      "method"      : "PUT",
+      "rel"         : "block",
+      "title"       : "Block"
+    },
+    {
+      "description" : "Activate a new card",
+      "href"        : "cards/{id}/activate",
+      "method"      : "PUT",
+      "rel"         : "activate",
+      "title"       : "Activate",
+      "properties"  : {
+        "cvc_code" : {
+          "description" : "Card's pin",
+          "type"        : "string",
+          "pattern"     : "^[0-9]{3}$"
+        }
+      }
+    },
+    {
+      "description" : "Cancel an existing card: cancel card subscription, lock card",
+      "href"        : "cards/{id}/cancel",
+      "method"      : "PUT",
+      "rel"         : "cancel",
+      "title"       : "Cancel"
+    },
+    {
+      "description" : "Update limits of a card",
+      "href"        : "cards/{id}/limits",
+      "method"      : "PUT",
+      "rel"         : "limits",
+      "title"       : "Update Limits"
+    },
+    {
+      "description" : "Create a new card and initiate the order",
+      "href"        : "cards",
+      "method"      : "POST",
+      "rel"         : "create",
+      "title"       : "Create",
+      "properties"  : {
+        "pin" : {
+          "$ref" : "./card/pin.json#properties/pin"
+        }
+      }
+    }
+  ]
+}
