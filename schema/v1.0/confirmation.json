@@ -1,0 +1,74 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "confirmation",
+  "description" : "Before you can use your bank account you have to confirm your email address and mobile phone number",
+  "required"    : [ "type" ],
+  "properties"  : {
+    "id" : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "type" : {
+      "description" : "Indicates the type of confirmation",
+        "enum"        : [
+          "email",
+          "mobile_phone"
+        ],
+        "type"  : "string"
+    },
+    "token" : {
+      "description" : "Token for the confirmation of your email address or mobile phone",
+      "type"        : "string"
+    },
+    "confirmed" : {
+      "description" : "State of the confirmation",
+      "type"  : "boolean"
+    }
+  },
+  "links" : [
+    {
+      "rel"  : "self",
+      "href" : "confirmations/{id}"
+    },
+    {
+      "rel" : "instances",
+      "href" : "confirmations"
+    },
+    {
+      "description" : "Confirm the email address or the mobile phone number",
+      "href"        : "confirmations",
+      "method"      : "PUT",
+      "rel"         : "confirm",
+      "title"       : "Confirm your account",
+      "properties"  : {
+        "type"  : {
+          "description" : "Indicates the type of confirmation",
+            "enum"        : [
+              "email",
+              "mobile_phone"
+            ],
+            "type"     : "string"
+        },
+        "token"   : {
+          "description" : "The confirmation token for your action",
+          "type"     : "string"
+        }
+      }
+    },
+    {
+      "description" : "Create a new confirmation token",
+      "href"        : "confirmations",
+      "method"      : "POST",
+      "rel"         : "create",
+      "title"       : "Create",
+      "type"  : {
+        "description" : "Indicates the type of confirmation",
+          "enum"        : [
+            "email",
+            "mobile_phone"
+          ],
+          "type"     : "string"
+      }
+    }
+  ]
+}

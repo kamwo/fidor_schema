@@ -188,6 +188,10 @@
       "href" : "customers/{id}/accounts"
     },
     {
+      "rel"  : "confirmations",
+      "href" : "customers/{id}/confirmations"
+    },
+    {
       "rel"         : "create",
       "href"        : "customers",
       "method"      : "POST",
