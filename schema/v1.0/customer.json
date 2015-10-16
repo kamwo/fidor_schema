@@ -4,9 +4,8 @@
   "title"       : "customer",
   "description" : "A customer object",
   "required"    : [
-    "email", "password", "adr_mobile", "first_name", "last_name",
-    "gender", "title", "tos", "privacy_policy"
-  ],
+    "email", "password", "adr_mobile"
+    ],
   "properties"  : {
     "id" : {
       "$ref" : "./base_types/base_types.json#definitions/id"
@@ -19,10 +18,35 @@
       "type"        : "string",
       "maxLength"   : 30
     },
+    "additional_first_name" : {
+      "description" : "The additional given name of the customer",
+      "type"        : "string",
+      "maxLength"   : 30
+    },
     "last_name" : {
       "description" : "The family name of the customer",
       "type"        : "string",
       "maxLength"   : 30
+    },
+    "maiden_name" : {
+      "description" : "Name at birth, maiden name.",
+      "type"        : "string",
+      "maxLength"   : 30
+    },
+    "password"   : {
+      "description" : "Password for accessing your account later. You can use lower and upper case letters, digits and special characters",
+      "type"        : ["string", "null"],
+      "minLength"   : 6,
+      "maxLength"   : 128,
+      "pattern"     : "^[0-9a-zA-Z!\"#$%&'()*+,-=./:;?@\\[\\]<>^_`{|}~]+$"
+    },
+    "legal" : {
+      "description" : "Legal requirements that have to be accepted",
+      "type"        : "array",
+      "items"       : {
+        "type"       : "object",
+        "$ref" : "./legal.json#"
+      }
     },
     "gender" : {
       "description" : "The gender of the customer",
@@ -33,9 +57,14 @@
       "type"     : "string"
     },
     "title" : {
-      "description" : "Salutation e.g Mr. or Ms./Mrs.",
-      "type"        : "string",
-      "enum"        : ["Mr.", "Mrs.", "Ms."]
+      "description" : "Salutation: 1 - Mr., 2 - Ms., 3 - Mr. Dr., 4 - Ms. Dr.",
+      "enum"        : [
+        1,
+        2,
+        3,
+        4
+      ],
+      "type"     : "integer"
     },
     "nick" : {
       "description" : "Nickname used in community.",
@@ -43,10 +72,20 @@
       "maxLength"   : 40,
       "minLength"   : 2
     },
-    "maiden_name" : {
-      "description" : "Name at birth, maiden name.",
-      "type"        : "string",
-      "maxLength"   : 30
+    "occupation"  : {
+      "description" : "Customer's current occupation: 1 - employee, 2 - executive, 3 - self-employed, 4 - freelancer, 5 - student, 6 - trainee, 7 - retired, 8 - privatier, 9 - unemployed",
+      "enum"        : [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "type"     : "integer"
     },
     "adr_street" : {
       "description" : "Address street",
@@ -97,6 +136,11 @@
       "description" : "Date of birth",
       "type"        : "string",
       "format"      : "date-time"
+    },
+    "birthplace" : {
+      "description" : "Place of birth",
+      "type"        : "string",
+      "maxLength"   : 100
     },
     "is_verified" : {
       "description" : "Indicates whether KYC has been performed.",
@@ -155,17 +199,13 @@
       "format"      : "date-time",
       "type"        : ["string", "null"]
     },
-    "tos" : {
-      "description" : "Indicates whether customer has agreed to terms of service or not",
-      "type"        : "boolean"
-    },
-    "privacy_policy" : {
-      "description" : "Indicates whether customer has agreed to privacy policy or not",
-      "type"        : "boolean"
-    },
     "newsletter"    : {
       "description" : "Indicates whether customer has agreed to receiving newsletter or not",
       "type"        : "boolean"
+    },
+    "affiliate_uid" : {
+      "description" : "Indicates the attachment of the customer to a certain affiliate",
+      "type"     : ["string", "null"]
     },
     "created_at" : {
       "$ref" : "./base_types/base_types.json#definitions/created_at"
@@ -188,19 +228,14 @@
       "href" : "customers/{id}/accounts"
     },
     {
+      "rel"  : "confirmations",
+      "href" : "customers/{id}/confirmations"
+    },
+    {
       "rel"         : "create",
       "href"        : "customers",
       "method"      : "POST",
-      "description" : "Creates a customer",
-      "properties"  : {
-        "password"   : {
-          "description" : "Password for accessing your account later. You can use lower and upper case letters, digits and special characters",
-          "type"        : ["string", "null"],
-          "minLength"   : 8,
-          "maxLength"   : 128,
-          "pattern"     : "^[0-9a-zA-Z!\"#$%&'()*+,-=./:;?@\\[\\]<>^_`{|}~]+$"
-        }
-      }
+      "description" : "Creates a customer"
     },
     {
       "rel"         : "update",
