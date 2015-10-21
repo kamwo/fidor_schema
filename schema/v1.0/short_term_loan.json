@@ -1,7 +1,7 @@
 {
   "$schema"     : "http://json-schema.org/draft-04/schema#",
   "type"        : "object",
-  "title"       : "Short-term Loan",
+  "title"       : "short_term_loan",
   "description" : "A short-term loan.",
   "required"    : ["loan_amount", "duration"],
   "properties"  : {
