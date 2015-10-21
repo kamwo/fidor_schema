@@ -2,7 +2,6 @@
   "$schema"     : "http://json-schema.org/draft-04/schema#",
   "type"        : "object",
   "title"       : "Card PIN Code",
-  "name"        : "pin",
   "rel"         : "pin",
   "description" : "Card PIN code",
   "parent"      : "card",

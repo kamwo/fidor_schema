@@ -1,7 +1,6 @@
 {
   "type"        : "object",
   "title"       : "List",
-  "name"        : "list",
   "description" : "A paginated list of objects",
   "properties"  : {
     "data" : {
@@ -10,7 +9,7 @@
     },
     "collection" : {
       "type"        : "object",
-      "name"        : "collection",
+      "title"        : "Collection",
       "description" : "Pagination information for a list of returned object (not standalone)",
       "properties"  : {
         "current_page" : {

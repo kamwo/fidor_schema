@@ -2,7 +2,6 @@
   "$schema"     : "http://json-schema.org/draft-04/schema#",
   "type"        : "object",
   "title"       : "Card",
-  "name"        : "card",
   "description" : "Cards endpoint",
   "required"    : ["type", "design", "currency", "pin"],
   "properties"  : {

@@ -1,7 +1,6 @@
 {
   "type"        : "object",
   "title"       : "Blocked Amount",
-  "name"        : "blocked_amount",
   "description" : "",
   "properties"  : {
 
