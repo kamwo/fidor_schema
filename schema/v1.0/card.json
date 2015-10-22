@@ -46,6 +46,9 @@
       "description" : "Card design",
       "type"        : "string"
     },
+    "pin" : {
+      "$ref"        : "./card/pin.json#properties/pin"
+    },
     "currency" : {
       "$ref"        : "./base_types/base_types.json#definitions/currency"
     },
@@ -199,7 +202,7 @@
       "title"       : "Activate",
       "properties"  : {
         "cvc_code" : {
-          "description" : "Card's pin",
+          "description" : "Card's cvc code",
           "type"        : "string",
           "pattern"     : "^[0-9]{3}$"
         }

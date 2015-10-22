@@ -89,6 +89,11 @@
       "href" : "accounts/{id}"
     },
     {
+      "rel"         : "create",
+      "href"        : "accounts",
+      "method"      : "POST"
+    },
+    {
       "rel"          : "instances",
       "href"         : "accounts"
     },
