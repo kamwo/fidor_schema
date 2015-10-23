@@ -18,6 +18,11 @@
       "readOnly"    : true,
       "type"        : "string"
     },
+    "name" : {
+      "description" : "Generic representation of the name, e.g. first name, last name, maiden name",
+      "type"        : "string",
+      "maxLength"   : 30
+    },
     "transaction_id" : {
       "description" : "Identifies a reference to a corresponding transaction",
       "readOnly"    : true,

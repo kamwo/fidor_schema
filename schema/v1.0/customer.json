@@ -15,23 +15,19 @@
     },
     "first_name" : {
       "description" : "The given name of the customer",
-      "type"        : "string",
-      "maxLength"   : 30
+      "$ref" : "./base_types/base_types.json#definitions/name"
     },
     "additional_first_name" : {
       "description" : "The additional given name of the customer",
-      "type"        : "string",
-      "maxLength"   : 30
+      "$ref" : "./base_types/base_types.json#definitions/name"
     },
     "last_name" : {
       "description" : "The family name of the customer",
-      "type"        : "string",
-      "maxLength"   : 30
+      "$ref" : "./base_types/base_types.json#definitions/name"
     },
     "maiden_name" : {
       "description" : "Name at birth, maiden name.",
-      "type"        : "string",
-      "maxLength"   : 30
+      "$ref" : "./base_types/base_types.json#definitions/name"
     },
     "password"   : {
       "description" : "Password for accessing your account later. You can use lower and upper case letters, digits and special characters",
@@ -230,6 +226,10 @@
     {
       "rel"  : "confirmations",
       "href" : "customers/{id}/confirmations"
+    },
+    {
+      "rel"  : "rewards",
+      "href" : "customers/{id}/rewards"
     },
     {
       "rel"         : "create",
