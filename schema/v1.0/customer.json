@@ -236,12 +236,6 @@
       "href" : "customers/{id}/projected_rewards"
     },
     {
-      "rel"         : "create",
-      "href"        : "customers",
-      "method"      : "POST",
-      "description" : "Creates a customer"
-    },
-    {
       "rel"         : "update",
       "href"        : "customers/{id}",
       "method"      : "PUT",
