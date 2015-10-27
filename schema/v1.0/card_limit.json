@@ -1,0 +1,34 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "card_limit",
+  "description" : "See and update your card limits",
+  "properties"  : {
+    "atm_limit"  : {
+      "description" : "Cash limit",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    },
+    "transaction_single_limit" : {
+      "description" : "Limit for a single transaction",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    },
+    "transaction_volume_limit" : {
+      "description" : "Daily transaction limit",
+      "$ref" : "./base_types/base_types.json#definitions/amount"
+    }
+  },
+  "links" : [
+    {
+      "rel"  : "self",
+      "href" : "card_limits"
+    },
+    {
+      "description" : "Update your card limits",
+      "href"        : "card_limits",
+      "method"      : "PUT",
+      "rel"         : "update",
+      "title"       : "update_card_limits"
+    }
+
+  ]
+}

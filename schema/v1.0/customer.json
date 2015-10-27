@@ -232,6 +232,10 @@
       "href" : "customers/{id}/rewards"
     },
     {
+      "rel"  : "projected_rewards",
+      "href" : "customers/{id}/projected_rewards"
+    },
+    {
       "rel"         : "create",
       "href"        : "customers",
       "method"      : "POST",

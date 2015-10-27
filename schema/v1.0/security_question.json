@@ -1,0 +1,25 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "security_question",
+  "description" : "See all possible security questions",
+  "properties"  : {
+    "id"  : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "question" : {
+      "description" : "Security questions to choose",
+      "type" : "string"
+    }
+  },
+  "links" : [
+    {
+      "rel"  : "instances",
+      "href" : "security_questions"
+    },
+    {
+      "rel"  : "self",
+      "href" : "security_questions/{id}"
+    }
+  ]
+}

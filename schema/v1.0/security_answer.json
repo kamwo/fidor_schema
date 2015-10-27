@@ -1,0 +1,39 @@
+{
+  "$schema"     : "http://json-schema.org/draft-04/schema#",
+  "type"        : "object",
+  "title"       : "security_answer",
+  "description" : "Set and update your security answer",
+  "required"    : [
+    "question_id", "answer"
+    ],
+  "properties"  : {
+    "id"  : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "question_id" : {
+      "$ref" : "./base_types/base_types.json#definitions/id"
+    },
+    "question" : {
+      "description" : "Your security question",
+      "type" : "string",
+      "readOnly" : true
+    },
+    "answer" : {
+      "description" : "An answer to a security question",
+      "type" : "string"
+    }
+  },
+  "links" : [
+    {
+      "rel"  : "current",
+      "href" : "security_answers/current"
+    },
+    {
+      "description" : "Set your security answer",
+      "href"        : "security_answers",
+      "method"      : "POST",
+      "rel"         : "create",
+      "title"       : "create_questions_answer"
+    }
+  ]
+}
