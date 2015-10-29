@@ -4,19 +4,12 @@
   "title"       : "security_answer",
   "description" : "Set and update your security answer",
   "required"    : [
-    "question_id", "answer"
+    "question", "answer"
     ],
   "properties"  : {
-    "id"  : {
-      "$ref" : "./base_types/base_types.json#definitions/id"
-    },
-    "question_id" : {
-      "$ref" : "./base_types/base_types.json#definitions/id"
-    },
     "question" : {
       "description" : "Your security question",
-      "type" : "string",
-      "readOnly" : true
+      "type" : "string"
     },
     "answer" : {
       "description" : "An answer to a security question",
