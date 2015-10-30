@@ -102,6 +102,14 @@
           "format" : "date-time",
           "type"   : "string"
         },
+        "filter[amount_from]" : {
+          "title"  : "Amount filter from >= amount in account currency, in minor units, e.g. 1EUR is represented as 100",
+          "type"   : "integer"
+        },
+        "filter[amount_to]" : {
+          "title"  : "Amount filter to <= amount in account currency, in minor units, e.g. 1EUR is represented as 100",
+          "type"   : "integer"
+        },
         "filter[preauth_types]" : {
           "$ref"  : "./base_types/base_types.json#definitions/preauth_type",
           "title" : "By preauth types"
