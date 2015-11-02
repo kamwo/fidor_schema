@@ -53,12 +53,10 @@
       "type"     : "string"
     },
     "title" : {
-      "description" : "Salutation: 1 - Mr., 2 - Ms., 3 - Mr. Dr., 4 - Ms. Dr.",
+      "description" : "Salutation: 1 - Mr., 2 - Mrs.",
       "enum"        : [
         1,
-        2,
-        3,
-        4
+        2
       ],
       "type"     : "integer"
     },
