@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "validates",
+  "description": "Validate provided bank account details e.g. account number/bank code or IBAN",
+  "properties": {
+    "iban" : {
+      "$ref" : "./base_types/base_types.json#definitions/iban"
+    },
+    "bic" : {
+      "$ref" : "./base_types/base_types.json#definitions/bic"
+    },
+    "bank_name" : {
+      "description" : "Name of the bank provided IBAN belongs to",
+      "type" : "string"
+    }
+  },
+  "links": [
+    {
+      "rel": "iban",
+      "href": "validates",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "iban": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "iban"
+        ]
+      }
+    },
+    {
+      "rel": "bank_account",
+      "href": "validates",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "account_number": {
+            "type": "string"
+          },
+          "bank_code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_number",
+          "bank_code"
+        ]
+      }
+    }
+  ]
+}
