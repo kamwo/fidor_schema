@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "notification",
+  "description": "Notification resource to communicate events",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "customer_id": {
+      "$ref": "../base_types/base_types.json#definitions/account_id"
+    },
+    "type": {
+      "description": "Notification type",
+      "type": "string",
+      "enum": [
+        "postident"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "push",
+      "href": "notification/push",
+      "method": "POST"
+    }
+  ]
+}
