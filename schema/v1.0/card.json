@@ -150,13 +150,6 @@
   },
   "links" : [
     {
-      "description" : "All cards of a customer",
-      "href"        : "cards",
-      "method"      : "GET",
-      "rel"         : "instances",
-      "title"       : "Index"
-    },
-    {
       "description" : "Card details",
       "href"        : "cards/{id}",
       "method"      : "GET",
@@ -235,6 +228,11 @@
     {
       "rel" : "instances",
       "href" : "cards",
+      "description" : "All cards of a customer",
+      "href"        : "cards",
+      "method"      : "GET",
+      "rel"         : "instances",
+      "title"       : "Index",
       "properties" : {
         "filter[states]" : {
           "title" : "Find cards in a certain state. Single state or multiple states comma-separated.",
