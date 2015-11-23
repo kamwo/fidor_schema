@@ -49,6 +49,11 @@
     "pin" : {
       "$ref"        : "./card/pin.json#properties/pin"
     },
+    "cvc_code" : {
+      "description" : "Card's cvc code",
+      "type"        : "string",
+      "pattern"     : "^[0-9]{3}$"
+    },
     "currency" : {
       "$ref"        : "./base_types/base_types.json#definitions/currency"
     },
@@ -192,14 +197,7 @@
       "href"        : "cards/{id}/activate",
       "method"      : "PUT",
       "rel"         : "activate",
-      "title"       : "Activate",
-      "properties"  : {
-        "cvc_code" : {
-          "description" : "Card's cvc code",
-          "type"        : "string",
-          "pattern"     : "^[0-9]{3}$"
-        }
-      }
+      "title"       : "Activate"
     },
     {
       "description" : "Cancel an existing card: cancel card subscription, lock card",
@@ -228,6 +226,8 @@
       }
     },
     {
+      "rel" : "instances",
+      "href" : "cards",
       "description" : "All cards of a customer",
       "href"        : "cards",
       "method"      : "GET",
