@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "bank_check",
+  "description": "Validate provided bank IBAN",
+  "properties": {
+    "iban" : {
+      "$ref" : "./base_types/base_types.json#definitions/iban"
+    },
+    "bank_name" : {
+      "description" : "Name of the bank provided IBAN belongs to",
+      "type" : "string"
+    }
+  },
+  "links": [
+    {
+      "rel": "iban",
+      "href": "bank_check",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "iban": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "iban"
+        ]
+      }
+    }
+  ]
+}
