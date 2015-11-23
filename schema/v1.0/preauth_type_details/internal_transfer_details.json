@@ -13,6 +13,9 @@
       "readOnly"    : true,
       "type"        : "string"
     },
+    "receiver" : {
+      "$ref" : "../internal_transfer.json#properties/receiver"
+    },
     "remote_bic" : {
       "description" : "BIC of the transfer sender",
       "readOnly"    : true,
