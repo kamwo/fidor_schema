@@ -7,9 +7,6 @@
     "iban" : {
       "$ref" : "./base_types/base_types.json#definitions/iban"
     },
-    "bic" : {
-      "$ref" : "./base_types/base_types.json#definitions/bic"
-    },
     "bank_name" : {
       "description" : "Name of the bank provided IBAN belongs to",
       "type" : "string"
