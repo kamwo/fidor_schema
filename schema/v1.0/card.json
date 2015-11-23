@@ -49,6 +49,11 @@
     "pin" : {
       "$ref"        : "./card/pin.json#properties/pin"
     },
+    "cvc_code" : {
+      "description" : "Card's cvc code",
+      "type"        : "string",
+      "pattern"     : "^[0-9]{3}$"
+    },
     "currency" : {
       "$ref"        : "./base_types/base_types.json#definitions/currency"
     },
@@ -199,14 +204,7 @@
       "href"        : "cards/{id}/activate",
       "method"      : "PUT",
       "rel"         : "activate",
-      "title"       : "Activate",
-      "properties"  : {
-        "cvc_code" : {
-          "description" : "Card's cvc code",
-          "type"        : "string",
-          "pattern"     : "^[0-9]{3}$"
-        }
-      }
+      "title"       : "Activate"
     },
     {
       "description" : "Cancel an existing card: cancel card subscription, lock card",
@@ -231,6 +229,52 @@
       "properties"  : {
         "pin" : {
           "$ref" : "./card/pin.json#properties/pin"
+        }
+      }
+    },
+    {
+      "rel" : "instances",
+      "href" : "cards",
+      "properties" : {
+        "filter[states]" : {
+          "title" : "Find cards in a certain state. Single state or multiple states comma-separated.",
+          "enum"  : [
+            "created",
+            "mobile_tan_sent",
+            "card_registration_requirments_check",
+            "card_registration_pending",
+            "card_registration_in_progress",
+            "card_registration_canceled",
+            "card_registration_completed",
+            "active",
+            "revoked",
+            "canceled",
+            "disabled",
+            "lost",
+            "expired",
+            "annual_fee_pending_active",
+            "annual_fee_pending_registration_completed"
+          ],
+          "type" : "string"
+        },
+        "page" : {
+          "title"       : "Page",
+          "description" : "In paginated results set the page to look for",
+          "type"        : "integer"
+        },
+        "per_page" : {
+          "title"       : "Per page",
+          "description" : "Results per page. Default is 10, max is 100",
+          "type"        : "integer"
+        },
+        "sort" : {
+          "title" : "Sort",
+          "enum"  : [
+            "ASC",
+            "DESC"
+          ],
+          "description" : "Sort the results in ASC or DESC",
+          "type"        : "string"
         }
       }
     }
