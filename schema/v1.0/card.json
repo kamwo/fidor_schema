@@ -49,6 +49,11 @@
     "pin" : {
       "$ref"        : "./card/pin.json#properties/pin"
     },
+    "pan" : {
+      "description" : "Card's PAN number",
+      "type"        : "string",
+      "pattern"     : "^[0-9]{14,16}$"
+    },
     "cvc_code" : {
       "description" : "Card's cvc code",
       "type"        : "string",
@@ -165,11 +170,11 @@
       "schema"      : "pin"
     },
     {
-      "description" : "Card PAN number",
+      "description" : "Card's PAN number",
       "href"        : "cards/{id}/pan",
       "method"      : "GET",
       "rel"         : "pan",
-      "title"       : "Permanent Account Number"
+      "title"       : "Primary Account Number"
     },
     {
       "description" : "Lock a card",
