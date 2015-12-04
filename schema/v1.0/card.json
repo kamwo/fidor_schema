@@ -54,7 +54,7 @@
       "type"        : "string",
       "pattern"     : "^[0-9]{14,16}$"
     },
-    "cvc_code" : {
+    "cvc" : {
       "description" : "Card's cvc code",
       "type"        : "string",
       "pattern"     : "^[0-9]{3}$"
@@ -175,6 +175,13 @@
       "method"      : "GET",
       "rel"         : "pan",
       "title"       : "Primary Account Number"
+    },
+    {
+      "description" : "Card Verification Code",
+      "href"        : "cards/{id}/cvc",
+      "method"      : "GET",
+      "rel"         : "cvc",
+      "title"       : "Card Verification Value Code"
     },
     {
       "description" : "Lock a card",
