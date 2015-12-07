@@ -14,7 +14,7 @@
   },
   "links": [
     {
-      "rel": "iban",
+      "rel": "instances",
       "href": "bank_check",
       "schema": {
         "type": "object",
