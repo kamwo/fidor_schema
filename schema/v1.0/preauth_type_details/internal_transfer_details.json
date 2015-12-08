@@ -40,6 +40,11 @@
       "description" : "Subject of the transaction",
       "readOnly"    : true,
       "type"        : "string"
+    },
+    "recipient_name": {
+      "description" : "Full name of the recipient",
+      "readOnly"    : true,
+      "type"        : "string"
     }
   }
 }
