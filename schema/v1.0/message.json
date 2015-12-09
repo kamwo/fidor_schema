@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "message",
+  "description": "Message",
+  "properties": {
+    "id": {
+      "$ref": "../base_types/base_types.json#definitions/id",
+      "readOnly": true
+    },
+    "subject": {
+      "description": "Subject of the message",
+      "readOnly": true,
+      "type": "string"
+    },
+    "body": {
+      "description": "Body of the message",
+      "readOnly": true,
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of the message",
+      "type": "string",
+      "enum": [
+        "information",
+        "offer",
+        "document"
+      ]
+    },
+    "created_at": {
+      "$ref": "./base_types/base_types.json#definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "./base_types/base_types.json#definitions/updated_at"
+    }
+  },
+  "links": [
+    {
+      "description": "Get one particular message",
+      "rel": "self",
+      "href": "messages/{id}",
+      "method": "GET"
+    },
+    {
+      "description": "Download an attachment",
+      "rel": "download",
+      "href": "messages/{id}/attachment",
+      "method": "GET"
+    },
+    {
+      "description": "Archive a message",
+      "rel": "archive",
+      "href": "messages/{id}/archive",
+      "method": "PUT"
+    },
+    {
+      "description": "Unpack an archived a message",
+      "rel": "unarchive",
+      "href": "messages/{id}/unarchive",
+      "method": "PUT"
+    },
+    {
+      "rel": "instances",
+      "href": "messages",
+      "title": "index",
+      "properties": {
+        "filter[created_at_from]": {
+          "title": "Date filter from >= date. ISO 8601 Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "filter[created_at_to]": {
+          "title": "Date filter to <= date. ISO 8601 Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "filter[updated_at_from]": {
+          "title": "Date filter from >= date. ISO 8601 Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "filter[updated_at_to]": {
+          "title": "Date filter to <= date. ISO 8601 Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "filter[types]": {
+          "title": "By message types",
+          "type": "string",
+          "enum": [
+            "information",
+            "offer",
+            "document"
+          ]
+        },
+        "page": {
+          "title": "Page",
+          "description": "In paginated results set the page to look for",
+          "type": "integer"
+        },
+        "per_page": {
+          "title": "Per page",
+          "description": "Results per page. Default is 10, max is 100",
+          "type": "integer"
+        },
+        "sort": {
+          "title": "Sort",
+          "enum": [
+            "ASC",
+            "DESC"
+          ],
+          "description": "Sort the results in ASC or DESC",
+          "type": "string"
+        }
+      }
+    }
+  ]
+}
