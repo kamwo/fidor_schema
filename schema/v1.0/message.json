@@ -43,7 +43,7 @@
     },
     {
       "description": "Download an attachment",
-      "rel": "download",
+      "rel": "attachment",
       "href": "messages/{id}/attachment",
       "method": "GET"
     },
